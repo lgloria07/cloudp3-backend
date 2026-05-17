@@ -36,10 +36,6 @@ const textoAImagen = async (imagenSAS) => {
 
     //Extraemos el cuerpo de la respuesta
     const analysisResult = response.body;
-    console.log("STATUS:");
-    console.log(response.status);
-    console.log("BODY:");
-    console.dir(analysisResult, { depth: null });
 
     //Verifica que la respuesta este en un estado valido, de no ser así indicamos el error
     if (response.status != 200) {
@@ -50,7 +46,6 @@ const textoAImagen = async (imagenSAS) => {
 
     console.log("El estatus esta correcto");
 
-    console.log(JSON.stringify(analysisResult, null, 2));
     const textoExtraido = extraerTextoDeAzure(analysisResult);
     console.log("TEXTO EXTRAIDO:");
     console.log(textoExtraido);
@@ -66,10 +61,6 @@ const textoAImagen = async (imagenSAS) => {
 }
 
 const extraerTextoDeAzure = (analysisResult) => {
-
-    console.log("RESULTADO COMPLETO:");
-    console.dir(analysisResult, { depth: null });
-
     if (!analysisResult?.readResult?.blocks) {
         return "";
     }
